@@ -14,8 +14,8 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-  host: localhost
+  password: password
+  host: db
 
 development:
   <<: *default
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: favoretest_production
-  username: favoretest
-  password: <%= ENV['FAVORETEST_DATABASE_PASSWORD'] %>
+  # database: favoretest_production
+  # username: favoretest
+  # password: <%= ENV['FAVORETEST_DATABASE_PASSWORD'] %>
