@@ -1,0 +1,39 @@
+version: '3'
+volumes:
+  mysql_data:
+  public_data:
+  tmp_data:
+  log_data:
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/favoretest
+      - public_data:/favoretest/public
+      - tmp_data:/favoretest/tmp
+      - log_data:/favoretest/log
+    ports:
+      - "3000:3000"
+    links:
+      - db
+
+  nginx:
+    build: containers/nginx
+    ports:
+      - "80:80"
+    volumes:
+      - public_data:/favoretest/public
+      - tmp_data:/favoretest/tmp
+    depends_on:
+      - web
