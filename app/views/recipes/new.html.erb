@@ -1,2 +1,20 @@
-<h1>Recipes#new</h1>
-<p>Find me in app/views/recipes/new.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2>新規投稿</h2>
+      <%= form_for @recipe do |f| %>
+        <div class="form-group">
+          <label>レシピ名</label>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label>作り方</label>
+          <%= f.text_area :title, class: 'form-control' %>
+        </div>
+        <div>
+          <%= f.submit class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

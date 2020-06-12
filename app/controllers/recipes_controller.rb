@@ -22,6 +22,5 @@ class RecipesController < ApplicationController
   end
 
   def edit
-
   end
 end
