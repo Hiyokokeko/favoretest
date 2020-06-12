@@ -1,2 +1,10 @@
-<h1>Recipes#edit</h1>
-<p>Find me in app/views/recipes/edit.html.erb</p>
+<%= render 'errors', recipe: @recipe %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2>編集</h2>
+        <%= render 'form', recipe: @recipe %>
+    </div>
+  </div>
+</div>
