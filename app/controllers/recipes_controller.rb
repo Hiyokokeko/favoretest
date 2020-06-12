@@ -23,4 +23,9 @@ class RecipesController < ApplicationController
 
   def edit
   end
+
+  private
+  def recipe_params
+    params.require(:recipe).permit(:title, :body)
+  end
 end
