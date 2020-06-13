@@ -16,11 +16,16 @@
               <td><%= recipe.user.name %></td>
               <td>
                 <% if current_user.already_favorited?(recipe) %>
-                  <%= link_to 'いいねをはずす', recipe_favorites_path(recipe), method: :delete %>
+                  <%= link_to recipe_favorites_path(recipe), method: :delete do %>
+                    <i class="fas fa-heart"></i>
+                  <% end %>
+                  <%= recipe.favorites.count %>
                 <% else %>
-                  <%= link_to 'いいね', recipe_favorites_path(recipe), method: :post  %>
+                  <%= link_to recipe_favorites_path(recipe), method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                  <%= recipe.favorites.count %>
                 <% end %>
-                <%= recipe.favorites.count %>
               </td>
             </tr>
           <% end %>
